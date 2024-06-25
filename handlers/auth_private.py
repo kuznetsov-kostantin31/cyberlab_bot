@@ -1,4 +1,4 @@
-from aiogram import types, Router
+from aiogram import types, Router, F
 from aiogram.filters import CommandStart
 import pandas as pd
 
@@ -24,7 +24,7 @@ async def startBot(message: types.Message):
 
 
 @auth_router.message()
-@auth_router.callback_query()
+@auth_router.callback_query(F.data == 'yes')
 async def callback_data(callback: types.CallbackQuery, message: types.Message):
     action = callback.data
 
